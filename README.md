@@ -5,5 +5,5 @@ video-kentpei created by GitHub Classroom
 2.Tweppy(Twitter API)  
 3.ffmpeg  
 # Design
- ![image](https://github.com/BUEC500C1/video-kentpei/pictures/arch.JPG)
+ ![image](https://github.com/kentpei/miniproject3/blob/master/arch.JPG)
 
