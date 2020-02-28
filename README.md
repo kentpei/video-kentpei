@@ -1,4 +1,4 @@
-# api-design-kentpei
+# Video-kentpei
 video-kentpei created by GitHub Classroom
 # technology 
 1.Python3.7  
