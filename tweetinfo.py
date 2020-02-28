@@ -4,7 +4,6 @@ import re
 import json
 import tweepy  # https://github.com/tweepy/tweepy
 import os
-import configparser
 import shutil
 shutil.copy('keys','keys.py')
 from keys import *
@@ -45,7 +44,11 @@ def get_all_tweets(name,n):
     alltweets = []
 
     # make initial request for most recent tweets (200 is the maximum allowed count)
+    for status in tweepy.Cursor(api.user_timeline, id=name, count=n, tweet_mode='extended').items(n):
+        alltweets.append(status.full_text)
+    '''
     new_tweets = api.user_timeline(screen_name=name, count=n)
     for tweet in new_tweets:
         alltweets = alltweets + [tweet.text]
+    '''
     return alltweets
