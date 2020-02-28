@@ -6,15 +6,15 @@ import queue
 import threading
 import imagetovideo
 import os
+Name_List = ['BU_ece', 'BU_CCD', 'BU_CAS', 'BU_Tweets','kobebryant','DCBatman',
+            'DCSuperman', "DWade", "CP3", 'LinkedIn']
 
 
-
-num_threads = 5 # Build threads
+num_threads = 3# Build threads
 threads = []
 q = queue.Queue()   # build queue
 
-Name_List = ['BU_ece', 'BU_CCD', 'BU_CAS', 'BU_Tweets','kobebryant','DCBatman',
-            'DCSuperman', "DWade", "CP3","StephenCurry30", 'LinkedIn']
+
 def worker():
     while True:
         item = q.get()
@@ -45,8 +45,9 @@ for i in range(num_threads):
 # join thread in threads list
 for j in threads:
     t.join()
+path = "./pictures/videos/"
+os.chdir(path)
 f = open("Mylist.txt", 'w')
-
 for i in Name_List:
     f.write('file ' + "\'" + str(i) + '.mp4' + "\'")
     f.write('\n')
