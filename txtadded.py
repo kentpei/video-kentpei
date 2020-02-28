@@ -66,4 +66,4 @@ def main(name,png,key):
     text = tweetinfo.get_all_tweets(name, 3)
     video(png, text, key)
     os.system("ffmpeg -r 1 -f image2 -s 1920x1080 -start_number 1 -i " +str(key)+"%02d.png -vframes 1000 -vcodec libx264 -crf 25  -pix_fmt yuv420p "+str(name)+".mp4")
-main("StephenCurry30","test.png","test")
+#main("StephenCurry30","test.png","test")
