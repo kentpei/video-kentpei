@@ -5,6 +5,7 @@ from PIL import ImageDraw
 import tweetinfo
 import re
 import os
+import subprocess
 '''
 img = Image.new('RGB', (100, 30), color=(0, 0, 0))
 img = 
@@ -36,6 +37,9 @@ def text_wrap(text, font, max_width):
             lines.append(line)
     return lines
 def video(png,text,key):
+    folder = os.path.exists('pictures')
+    if not folder:
+        os.makedirs('pictures')
     for i in range(len(text)):
 
         image = Image.open(png)
@@ -60,10 +64,7 @@ def video(png,text,key):
             # update the y position so that we can use it for next line
             y = y + line_height
         # save the image
-        image.save(str(key)+'0'+ str(i+1) +'.png', optimize=True)
-
-def main(name,png,key):
-    text = tweetinfo.get_all_tweets(name, 3)
-    video(png, text, key)
-    os.system("ffmpeg -r 1 -f image2 -s 1920x1080 -start_number 1 -i " +str(key)+"%02d.png -vframes 1000 -vcodec libx264 -crf 25  -pix_fmt yuv420p "+str(name)+".mp4")
-#main("StephenCurry30","test.png","test")
+        path = "./pictures/"
+        #files = path + "*.png"
+        #ffmpeg.input(files, pattern_type='glob', framerate=0.3 * self.num_threads).output('dailyfeed.mov').run()
+        image.save(path+str(key)+'0'+ str(i+1) +'.png', optimize=True)
