@@ -1,48 +1,57 @@
 # !/usr/bin/env python3
+
+
 import time
-import threading
-import txtadded
 import queue
+import threading
+import imagetovideo
 import os
-def worker(i):
+
+
+
+num_threads = 5 # Build threads
+threads = []
+q = queue.Queue()   # build queue
+
+Name_List = ['BU_ece', 'BU_CCD', 'BU_CAS', 'BU_Tweets','kobebryant','DCBatman',
+            'DCSuperman', "DWade", "CP3","StephenCurry30", 'LinkedIn']
+def worker():
     while True:
         item = q.get()
+        qSize = q.qsize()
         if item is None:
+            print("No item!")
             break
-        txtadded.main(item,"test.png","test")
-        print(item + "'s video is made!" ) #show working procedure
+        print("Currently process on " + item)
+        imagetovideo.imgToVideo("test.png", item, "test")
+        print("Current worker is finished.")
         q.task_done()
-if __name__ == '__main__':
-    num_of_threads = 5 #acclerate the process
-    Name_List = ["StephenCurry30", "KyrieIrving", "drose", "DWade", "CP3", "KlayThompson", "KDTrey5", "Dame_Lillard",
-                 "KingJames", "AntDavis23"]
-    q = queue.Queue()
+start = time.time()
+for item in Name_List:
+    q.put(item)
+# how to wait for enqueued tasks to be completed
+# reference: https://docs.python.org/2/library/queue.html
+for i in range(num_threads):
+    t = threading.Thread(target=worker)
+    t.start()
+    threads.append(t)
 
-    threads = []
-    start = time.time()
+q.join()     #when all task finsh , it joins
 
-    for item in Name_List:
-        q.put(item)
-    for i in range(1, num_of_threads + 1):
-        t = threading.Thread(target=worker,args=(i,))
-        threads.append(t)
-        t.start()
 
-    q.join() #when all task finsh , it joins
-    
+# put threads in queue
+for i in range(num_threads):
+    q.put(None)
+# join thread in threads list
+for j in threads:
+    t.join()
+f = open("Mylist.txt", 'w')
 
-    for i in range(num_of_threads):
-        q.put(None)         # to stop workers
-    for t in threads:
-        t.join()
-    f = open("Mylist.txt", 'w')
-
-    for i in Name_List:
-        f.write('file ' + "\'" + str(i) + '.mp4' + "\'")
-        f.write('\n')
-    f.close()
-    os.system("ffmpeg -f concat -safe 0 -i Mylist.txt -c copy output.mp4")
-
-    print(threads)
-    end = time.time()
-    print(end-start) #see how long it takes to finish all assignments
+for i in Name_List:
+    f.write('file ' + "\'" + str(i) + '.mp4' + "\'")
+    f.write('\n')
+f.close()
+os.system("ffmpeg -f concat -safe 0 -i Mylist.txt -c copy output.mp4")
+print(threads)
+end = time.time()
+print(end - start)  # see how long it takes to finish all assignments
