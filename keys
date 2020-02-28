@@ -1,0 +1,4 @@
+consumer_key: str = ''
+consumer_secret: str = ''
+access_key: str = ''
+access_secret: str = ''
