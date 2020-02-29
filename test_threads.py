@@ -1,4 +1,4 @@
-import threads
+import threadsrun
 def test():
-    assert threads.main() == 1
+    assert threadsrun.main() == 1
     pass
