@@ -18,7 +18,7 @@ video-kentpei created by GitHub Classroom
 1.tweetinfo python file is to produce text we needed to add into pictures.  
 2.txtadded python file is to add text into pictures and delete emoji or other illegal words in 'UTF-8'.  
 3.imagetovideo python file is to transfer pictures to videos using ffmpeg.  
-4.threads python file is to using queue and threads to process the imagetovideo part and produce all videos and integrate them.  
+4.threads python file is to using queue and threads to process the imagetovideo part and produce all videos.  
 # Homework part
 1. How many API calls you can handle simultaneously and why?  
 I call one API Tweepy.  
