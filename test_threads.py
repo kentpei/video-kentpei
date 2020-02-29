@@ -1,3 +1,5 @@
-import threadsrun
+import tweetinfo
 def test():
-    assert threadsrun.main() == 0
+    t = tweetinfo.get_all_tweets('kobebryant',1)
+    t.Start()
+    pass
