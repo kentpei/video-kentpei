@@ -1,3 +1,3 @@
-import threads
+import threadsrun
 def test():
-    assert threads.main() == 0
+    assert threadsrun.main() == 0
