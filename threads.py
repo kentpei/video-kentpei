@@ -13,7 +13,8 @@ Name_List = ['BU_ece', 'BU_CCD', 'BU_CAS', 'BU_Tweets','kobebryant','DCBatman',
 num_threads = 3# Build threads
 threads = []
 q = queue.Queue()   # build queue
-
+def main():
+    return 0
 
 def worker():
     while True:
