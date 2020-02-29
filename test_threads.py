@@ -1,4 +1,4 @@
-import threadsrun
+import imagetovideo
 def test():
-    assert threadsrun.main() == 1
+    assert imagetovideo.main() == 0
     pass
