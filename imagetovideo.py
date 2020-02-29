@@ -29,3 +29,5 @@ def imgToVideo(png,name,key):
     return
 #main("StephenCurry30","test.png","test")
 #imgToVideo("test.png","KingJames","test")
+def main():
+    return 0
