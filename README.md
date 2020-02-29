@@ -14,3 +14,10 @@ video-kentpei created by GitHub Classroom
 ![image](https://github.com/kentpei/miniproject3/blob/master/screenshot1.png)
 4.intergrate all the videos we get
 ![image](https://github.com/kentpei/miniproject3/blob/master/screenshot2.png)
+# Homework part
+1. How many API calls you can handle simultaneously and why?  
+I call one API Tweepy.  
+2. For example, run different API calls at the same time?  
+I think I can run defferent API calls at the same time.
+3. Split the processing of an API into multiple threads?
+I split the process to 3 threads.
